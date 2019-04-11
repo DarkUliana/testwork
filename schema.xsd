@@ -1,0 +1,44 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+        <xs:element name="Ticket">
+            <xs:complexType>
+                <xs:sequence>
+                    <xs:any processContents="skip" maxOccurs="unbounded" minOccurs="0"/>
+                    <xs:element name="AirSegments">
+                        <xs:complexType>
+                            <xs:sequence>
+                                <xs:element name="AirSegment" maxOccurs="unbounded" minOccurs="1">
+                                    <xs:complexType>
+                                        <xs:sequence>
+                                            <xs:any processContents="skip" maxOccurs="unbounded" minOccurs="0"/>
+                                            <xs:element name="Departure" type="dateTime"/>
+                                            <xs:element name="Arrival" type="dateTime"/>
+                                            <xs:element name="Board" type="point"/>
+                                            <xs:element name="Off" type="point"/>
+                                            <xs:any processContents="skip" maxOccurs="unbounded" minOccurs="0"/>
+                                        </xs:sequence>
+                                        <xs:anyAttribute processContents="skip"/>
+                                    </xs:complexType>
+                                </xs:element>
+                            </xs:sequence>
+                            <xs:anyAttribute processContents="skip"/>
+                        </xs:complexType>
+                    </xs:element>
+                    <xs:any processContents="skip" maxOccurs="unbounded" minOccurs="0"/>
+                </xs:sequence>
+                <xs:anyAttribute processContents="skip"/>
+            </xs:complexType>
+        </xs:element>
+
+        <xs:complexType name="dateTime">
+            <xs:attribute name="Date" type="xs:date"/>
+            <xs:attribute name="Time" type="xs:time"/>
+            <xs:anyAttribute processContents="skip"/>
+        </xs:complexType>
+        <xs:complexType name="point">
+            <xs:attribute name="City" type="xs:string"/>
+            <xs:attribute name="Point" type="xs:string"/>
+            <xs:anyAttribute processContents="skip"/>
+        </xs:complexType>
+    </xs:schema>
+
